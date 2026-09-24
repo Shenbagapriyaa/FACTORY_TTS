@@ -6,7 +6,7 @@
 
     <title>{{ $title ?? 'Textile Production Management' }}</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
 </head>
 
 <body>
@@ -19,7 +19,6 @@
             <span class="brand-main">Textile</span><span class="brand-accent">Flow</span>
         </div>
 
-        {{-- Logged-in User --}}
         <div class="sidebar-user">
             <div class="sidebar-user-name">
                 {{ auth()->user()->name }}
@@ -71,6 +70,7 @@
         </nav>
 
         <div class="sidebar-bottom">
+
             <form
                 method="POST"
                 action="{{ route('logout') }}"
@@ -83,6 +83,7 @@
                     <span>Logout</span>
                 </button>
             </form>
+
         </div>
 
     </aside>
@@ -90,8 +91,11 @@
     <main class="main-content">
 
         <header class="topbar">
+
             <div class="topbar-content">
+
                 <div>
+
                     <h1>
                         @yield('page-title', 'Dashboard')
                     </h1>
@@ -99,8 +103,11 @@
                     <p>
                         @yield('page-subtitle', 'Production master data')
                     </p>
+
                 </div>
+
             </div>
+
         </header>
 
         <div class="content">
@@ -115,7 +122,7 @@
 
 </div>
 
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ secure_asset('js/app.js') }}"></script>
 
 @stack('scripts')
 
