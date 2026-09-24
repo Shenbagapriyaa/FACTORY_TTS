@@ -1,59 +1,147 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Textile Production Management
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based textile production management module for managing fabric master data, fabric groups and lay models.
 
-## About Laravel
+The application brings these production master data activities into one simple workflow with authentication, validation and database relationships.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Authentication
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Email and password based login
+- Session based authentication
+- Logout functionality
+- Protected application pages
 
-## Learning Laravel
+Dashboard
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- Fabric count
+- Fabric Group count
+- Lay Model count
+- Production workflow overview
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Fabric Management
 
-## Laravel Sponsors
+- Create, edit, view and delete fabrics
+- Unique fabric code
+- Fabric type and composition
+- Colour, GSM and width
+- Unit and description
+- Active / Inactive status
+- Search and pagination
+- Soft delete support
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Fabric Groups
 
-### Premium Partners
+- Create and manage fabric groups
+- Assign multiple fabrics to a group
+- Remove fabrics from a group
+- Search and pagination
+- Active / Inactive status
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Lay Models
 
-## Contributing
+- Create and manage lay models
+- Select Fabric Group
+- Select Fabric
+- Lay length
+- Plies
+- Status
+- Production related details
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+The Fabric list is filtered based on the selected Fabric Group.
 
-## Code of Conduct
+The application also checks the selected Fabric and Fabric Group relationship on the backend before saving a Lay Model.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Data Relationship
 
-## Security Vulnerabilities
+Fabric Group
+    |
+    ├── Fabric
+    ├── Fabric
+    └── Fabric
+          |
+          ↓
+       Lay Model
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+A fabric can belong to multiple fabric groups through the fabric_group_fabric pivot table.
 
-## License
+Technology Used
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- PHP 8.2
+- Laravel 12
+- SQLite
+- Blade
+- HTML
+- CSS
+- JavaScript
+- Eloquent ORM
+
+Project Structure
+
+app/
+    Http/
+        Controllers/
+    Models/
+
+database/
+    migrations/
+    seeders/
+
+resources/
+    views/
+
+public/
+    css/
+    js/
+
+Setup
+
+Install the project dependencies:
+
+composer install
+
+Create the environment file:
+
+copy .env.example .env
+
+Generate the application key:
+
+php artisan key:generate
+
+For SQLite, create the database file when required:
+
+New-Item database/database.sqlite -ItemType File -Force
+
+Run the migrations and seed the database:
+
+php artisan migrate:fresh --seed
+
+Start the development server:
+
+php artisan serve
+
+Open the application at:
+
+http://127.0.0.1:8000
+
+Main Pages
+
+/login
+/dashboard
+/fabrics
+/fabric-groups
+/lay-models
+
+Validation and Data Integrity
+
+The Fabric selection in the Lay Model form depends on the selected Fabric Group.
+The selected Fabric is also checked on the server side before creating or updating a Lay Model.
+Fabric deletion is restricted when the Fabric is already being used by a Lay Model.
+
+Testing
+
+Run the test suite using:
+
+php artisan test
+
