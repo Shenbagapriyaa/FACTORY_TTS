@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('page-title','Create Lay Model') @section('page-subtitle','Create a production lay configuration') @section('content') @include('lay-models.form',['action'=>route('lay-models.store'),'method'=>'POST','layModel'=>null]) @endsection

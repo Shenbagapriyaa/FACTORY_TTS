@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('page-title','Edit Fabric') @section('page-subtitle','Update fabric master information') @section('content') @include('fabrics.form',['action'=>route('fabrics.update',$fabric),'method'=>'PUT','fabric'=>$fabric]) @endsection
