@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('page-title','Edit Fabric Group') @section('page-subtitle','Update group details and fabric membership') @section('content') @include('fabric-groups.form',['action'=>route('fabric-groups.update',$fabricGroup),'method'=>'PUT','fabricGroup'=>$fabricGroup,'selectedFabricIds'=>$selectedFabricIds]) @endsection

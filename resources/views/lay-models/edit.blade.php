@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('page-title','Edit Lay Model') @section('page-subtitle','Update lay model configuration') @section('content') @include('lay-models.form',['action'=>route('lay-models.update',$layModel),'method'=>'PUT','layModel'=>$layModel]) @endsection

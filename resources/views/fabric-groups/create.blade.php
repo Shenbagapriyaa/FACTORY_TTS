@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('page-title','Create Fabric Group') @section('page-subtitle','Create a group and assign fabrics') @section('content') @include('fabric-groups.form',['action'=>route('fabric-groups.store'),'method'=>'POST','fabricGroup'=>null,'selectedFabricIds'=>[]]) @endsection

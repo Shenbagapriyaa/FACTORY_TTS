@@ -1,0 +1,1 @@
+@extends('layouts.app') @section('page-title','Create Fabric') @section('page-subtitle','Add a new fabric master record') @section('content') @include('fabrics.form',['action'=>route('fabrics.store'),'method'=>'POST','fabric'=>null]) @endsection
