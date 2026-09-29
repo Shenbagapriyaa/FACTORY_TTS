@@ -219,6 +219,8 @@ textarea {
 .nav-item:hover {
     background: #1a273b;
     color: #ffffff;
+
+    transform: translateX(2px);
 }
 
 .nav-item.active {
@@ -350,9 +352,7 @@ textarea {
 
 
 /* =========================================================
-   =========================================================
-   TEXTILE FLOW DASHBOARD
-   =========================================================
+   DASHBOARD
 ========================================================= */
 
 .erp-dashboard {
@@ -629,7 +629,9 @@ textarea {
 }
 
 
-/* KPI ACCENTS */
+/* =========================================================
+   KPI ACCENTS
+========================================================= */
 
 .erp-kpi.blue {
     border-top: 3px solid #2563eb;
@@ -1042,6 +1044,7 @@ textarea {
 
 .toolbar {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     gap: 15px;
@@ -1070,8 +1073,11 @@ textarea {
 
 .btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
+    gap: 7px;
 
     padding: 10px 15px;
 
@@ -1089,7 +1095,11 @@ textarea {
 
     cursor: pointer;
 
-    transition: 0.18s ease;
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
 }
 
 .btn:hover {
@@ -1144,6 +1154,8 @@ textarea {
 
     border-bottom: 1px solid #edf0f4;
 
+    vertical-align: middle;
+
     white-space: nowrap;
 }
 
@@ -1153,6 +1165,8 @@ textarea {
     color: #738096;
 
     font-size: 11px;
+
+    font-weight: 700;
 
     text-transform: uppercase;
 
@@ -1165,44 +1179,128 @@ textarea {
     font-size: 13px;
 }
 
+.table-wrap tbody tr:hover {
+    background: #f8fbff;
+}
+
 
 /* =========================================================
-   ACTIONS
+   TABLE ACTIONS
 ========================================================= */
 
-.actions {
-    display: flex;
-    align-items: center;
+.table-actions {
+    display: flex !important;
 
-    gap: 10px;
+    align-items: center !important;
+
+    gap: 10px !important;
+
+    white-space: nowrap !important;
 }
 
-.actions a {
-    color: #2563eb;
+.table-actions form {
+    display: flex !important;
 
-    text-decoration: none;
+    align-items: center !important;
 
-    font-weight: 600;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.actions a:hover {
-    text-decoration: underline;
+.table-actions a,
+.table-actions button {
+    height: 34px !important;
+
+    min-width: 58px !important;
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 13px !important;
+
+    border-radius: 7px !important;
+
+    border: 1px solid #d8dee8 !important;
+
+    background: #ffffff !important;
+
+    font-family: inherit !important;
+
+    font-size: 12px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    text-decoration: none !important;
+
+    cursor: pointer !important;
+
+    appearance: none !important;
+
+    -webkit-appearance: none !important;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease !important;
 }
 
-.actions form {
-    display: inline;
+.table-actions .action-view {
+    color: #2563eb !important;
+
+    background: #f8fbff !important;
+
+    border-color: #bfdbfe !important;
 }
 
-.actions button {
-    border: 0;
+.table-actions .action-view:hover {
+    color: #1d4ed8 !important;
 
-    background: none;
+    background: #eff6ff !important;
 
-    color: #dc2626;
+    border-color: #93c5fd !important;
 
-    cursor: pointer;
+    transform: translateY(-1px);
+}
 
-    font-weight: 600;
+.table-actions .action-edit {
+    color: #475467 !important;
+
+    background: #ffffff !important;
+
+    border-color: #d8dee8 !important;
+}
+
+.table-actions .action-edit:hover {
+    color: #172033 !important;
+
+    background: #f8fafc !important;
+
+    border-color: #b8c2d1 !important;
+
+    transform: translateY(-1px);
+}
+
+.table-actions .action-delete {
+    color: #dc2626 !important;
+
+    background: #ffffff !important;
+
+    border-color: #fecaca !important;
+}
+
+.table-actions .action-delete:hover {
+    color: #b91c1c !important;
+
+    background: #fef2f2 !important;
+
+    border-color: #fca5a5 !important;
+
+    transform: translateY(-1px);
 }
 
 
@@ -1211,7 +1309,9 @@ textarea {
 ========================================================= */
 
 .status {
-    display: inline-block;
+    display: inline-flex;
+
+    align-items: center;
 
     padding: 4px 9px;
 
@@ -1265,6 +1365,12 @@ textarea {
     font-size: 12px;
 }
 
+.pagination a:hover {
+    background: #f8fafc;
+
+    border-color: #cbd5e1;
+}
+
 
 /* =========================================================
    EMPTY
@@ -1298,6 +1404,7 @@ textarea {
 
 .field {
     display: flex;
+
     flex-direction: column;
 
     gap: 7px;
@@ -1329,7 +1436,9 @@ textarea {
     font: inherit;
     font-size: 13px;
 
-    transition: 0.18s ease;
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
 }
 
 .field input:focus,
@@ -1359,6 +1468,7 @@ textarea {
 
 .form-actions {
     display: flex;
+
     justify-content: flex-end;
 
     gap: 10px;
@@ -1368,11 +1478,26 @@ textarea {
 
 
 /* =========================================================
+   THREE COLUMN FORM
+========================================================= */
+
+.form-grid-three {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
    SELECTION
 ========================================================= */
 
 .selection {
     margin-top: 24px;
+
     padding-top: 20px;
 
     border-top: 1px solid #edf0f4;
@@ -1380,6 +1505,7 @@ textarea {
 
 .selection-head {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -1415,11 +1541,19 @@ textarea {
     border: 1px solid #e0e6ee;
     border-radius: 10px;
 
+    background: #ffffff;
+
     cursor: pointer;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease;
 }
 
 .check:hover {
     border-color: #93b4ee;
+
+    background: #f8fbff;
 }
 
 .check input {
@@ -1477,6 +1611,8 @@ textarea {
     display: block;
 
     margin-top: 6px;
+
+    color: #172033;
 }
 
 .description {
@@ -1526,7 +1662,7 @@ textarea {
 
 
 /* =========================================================
-   LOGIN
+   LOGIN PAGE
 ========================================================= */
 
 .login-page {
@@ -1536,60 +1672,602 @@ textarea {
 
     place-items: center;
 
-    background: #f3f6fb;
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3f6fb 0%,
+            #eef3f9 100%
+        );
+
+    color: #18212f;
 }
 
-.login-card {
-    width: min(420px, 92vw);
 
-    padding: 35px;
+/* =========================================================
+   LOGIN LAYOUT
+========================================================= */
+
+.login-layout {
+    width: min(1050px, 94vw);
+
+    min-height: 610px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 430px;
 
     background: #ffffff;
 
-    border: 1px solid #e5eaf1;
-    border-radius: 18px;
+    border: 1px solid #dfe5ed;
+
+    border-radius: 20px;
+
+    overflow: hidden;
 
     box-shadow:
-        0 20px 50px rgba(23, 32, 51, 0.08);
+        0 24px 60px rgba(15, 23, 42, 0.10),
+        0 5px 18px rgba(15, 23, 42, 0.05);
 }
+
+
+/* =========================================================
+   LOGIN BRAND PANEL
+========================================================= */
+
+.login-brand-panel {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    min-width: 0;
+
+    padding: 42px 44px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101827 0%,
+            #162338 55%,
+            #1c3554 100%
+        );
+
+    color: #ffffff;
+
+    overflow: hidden;
+}
+
+.login-brand-panel::before {
+    content: "";
+
+    position: absolute;
+
+    width: 330px;
+    height: 330px;
+
+    right: -150px;
+    top: -130px;
+
+    border: 1px solid rgba(96, 165, 250, 0.16);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.login-brand-panel::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -80px;
+    bottom: -110px;
+
+    border: 1px solid rgba(96, 165, 250, 0.10);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LOGIN BRAND
+========================================================= */
+
+.login-brand-panel .brand {
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    font-family:
+        "IBM Plex Sans",
+        Inter,
+        sans-serif;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    letter-spacing: -0.7px;
+}
+
+.login-brand-panel .brand-main {
+    color: #ffffff;
+}
+
+.login-brand-panel .brand-accent {
+    color: #60a5fa;
+}
+
+
+/* =========================================================
+   LOGIN BRAND COPY
+========================================================= */
+
+.login-brand-copy {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 470px;
+}
+
+.login-overline {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: #72b5ff;
+
+    font-family:
+        "IBM Plex Mono",
+        monospace;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.8px;
+}
+
+.login-brand-copy h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-family:
+        "IBM Plex Sans",
+        Inter,
+        sans-serif;
+
+    font-size: 39px;
+
+    line-height: 1.13;
+
+    font-weight: 700;
+
+    letter-spacing: -1.1px;
+}
+
+.login-brand-copy p {
+    max-width: 410px;
+
+    margin: 18px 0 0;
+
+    color: #aebbd0;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   LOGIN BRAND FOOTER
+========================================================= */
+
+.login-brand-footer {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+
+    color: #71829a;
+
+    font-family:
+        "IBM Plex Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.login-card {
+    width: 100%;
+
+    min-height: 610px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 48px 44px;
+
+    background: #ffffff;
+
+    border: 0;
+
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOGIN FORM LABEL
+========================================================= */
+
+.login-form-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #2563eb;
+
+    font-family:
+        "IBM Plex Mono",
+        monospace;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   LOGIN HEADING
+========================================================= */
 
 .login-card h1 {
-    margin: 5px 0 0;
+    margin: 0;
+
+    color: #172033;
+
+    font-family:
+        "IBM Plex Sans",
+        Inter,
+        sans-serif;
+
+    font-size: 30px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    letter-spacing: -0.6px;
 }
 
-.muted {
-    margin-top: 6px;
+.login-card .muted {
+    margin: 8px 0 0;
 
     color: #738096;
+
+    font-size: 13px;
+
+    line-height: 1.5;
 }
+
+
+/* =========================================================
+   LOGIN FORM
+========================================================= */
 
 .login-card form {
-    margin-top: 25px;
+    width: 100%;
+
+    margin-top: 28px;
 }
+
+
+/* =========================================================
+   LOGIN FIELD
+========================================================= */
 
 .login-card .field {
-    margin-bottom: 16px;
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 18px;
 }
 
-.demo-note {
-    margin-top: 18px;
+.login-card .field label {
+    color: #334155;
 
-    padding: 10px;
+    font-size: 12px;
 
-    background: #f8fafc;
+    font-weight: 700;
+}
 
-    border-radius: 9px;
+.login-card .field input {
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0 13px;
+
+    border: 1px solid #d6dde8;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #18212f;
+
+    font-family:
+        "IBM Plex Sans",
+        Inter,
+        sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+}
+
+.login-card .field input::placeholder {
+    color: #a0aabd;
+}
+
+.login-card .field input:focus {
+    border-color: #2563eb;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.09);
+}
+
+
+/* =========================================================
+   PASSWORD FIELD
+========================================================= */
+
+.password-field {
+    position: relative;
+
+    width: 100%;
+}
+
+.password-field input {
+    padding-right: 50px !important;
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+========================================================= */
+
+.password-toggle {
+    position: absolute;
+
+    top: 50%;
+    right: 7px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    margin: 0;
+
+    transform: translateY(-50%);
+
+    border: 0;
+
+    border-radius: 6px;
+
+    background: transparent;
 
     color: #64748b;
 
-    font-size: 12px;
+    cursor: pointer;
+
+    z-index: 5;
+
+    appearance: none;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease;
+}
+
+.password-toggle:hover {
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+.password-toggle:focus {
+    outline: none;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+.password-toggle:active {
+    background: #dbeafe;
+
+    color: #1d4ed8;
+}
+
+.password-toggle svg {
+    display: block;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.login-card .btn.primary {
+    width: 100%;
+
+    height: 46px;
+
+    margin-top: 4px;
+
+    border: 1px solid #2563eb;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.login-card .btn.primary:hover {
+    background: #1d4ed8;
+
+    border-color: #1d4ed8;
+
+    box-shadow:
+        0 6px 16px rgba(37, 99, 235, 0.20);
+
+    transform: translateY(-1px);
+}
+
+.login-card .btn.primary:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   LOGIN SECURITY NOTE
+========================================================= */
+
+.login-security-note {
+    margin: 22px 0 0;
+
+    color: #98a2b3;
+
+    font-family:
+        "IBM Plex Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.7px;
 
     text-align: center;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   LOGIN ALERTS
+========================================================= */
+
+.login-card .alert {
+    margin-top: 18px;
+
+    margin-bottom: 0;
+
+    padding: 11px 13px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.login-card .alert.success {
+    background: #ecfdf5;
+
+    border: 1px solid #bbf7d0;
+
+    color: #166534;
+}
+
+.login-card .alert.error {
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #991b1b;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1200px
 ========================================================= */
 
 @media (max-width: 1200px) {
@@ -1610,6 +2288,10 @@ textarea {
     }
 }
 
+
+/* =========================================================
+   RESPONSIVE - 950px
+========================================================= */
 
 @media (max-width: 950px) {
 
@@ -1642,8 +2324,53 @@ textarea {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
+
+    .form-grid-three {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
 }
 
+
+/* =========================================================
+   LOGIN RESPONSIVE - 850px
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .login-page {
+        padding: 20px;
+    }
+
+    .login-layout {
+        width: min(500px, 94vw);
+
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+    }
+
+    .login-brand-panel {
+        min-height: 300px;
+
+        padding: 32px;
+    }
+
+    .login-brand-copy h2 {
+        font-size: 30px;
+    }
+
+    .login-card {
+        min-height: auto;
+
+        padding: 38px 32px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 650px
+========================================================= */
 
 @media (max-width: 650px) {
 
@@ -1734,6 +2461,7 @@ textarea {
     }
 
     .form-grid,
+    .form-grid-three,
     .check-grid {
         grid-template-columns: 1fr;
     }
@@ -1744,6 +2472,8 @@ textarea {
 
     .toolbar {
         flex-direction: column;
+
+        align-items: stretch;
     }
 
     .search {
@@ -1751,8 +2481,88 @@ textarea {
 
         max-width: 100%;
     }
+
+    .table-wrap {
+        overflow-x: auto;
+    }
+
+    .login-brand-panel {
+        min-height: 280px;
+
+        padding: 30px 26px;
+    }
+
+    .login-brand-copy h2 {
+        font-size: 28px;
+    }
+
+    .login-brand-copy p {
+        font-size: 13px;
+    }
+
+    .login-card {
+        padding: 34px 26px;
+    }
 }
 
+
+/* =========================================================
+   RESPONSIVE - 500px
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .login-page {
+        padding: 14px;
+    }
+
+    .login-layout {
+        width: 100%;
+
+        border-radius: 14px;
+    }
+
+    .login-brand-panel {
+        min-height: 260px;
+
+        padding: 27px 24px;
+    }
+
+    .login-brand-panel .brand {
+        font-size: 23px;
+    }
+
+    .login-brand-copy h2 {
+        font-size: 26px;
+    }
+
+    .login-brand-copy p {
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+    .login-brand-footer {
+        font-size: 8px;
+    }
+
+    .login-card {
+        padding: 32px 24px;
+    }
+
+    .login-card h1 {
+        font-size: 27px;
+    }
+
+    .login-form-label {
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 420px
+========================================================= */
 
 @media (max-width: 420px) {
 
@@ -1788,5 +2598,17 @@ textarea {
         min-height: auto;
 
         padding: 14px;
+    }
+
+    .login-brand-panel {
+        padding: 24px 20px;
+    }
+
+    .login-brand-copy h2 {
+        font-size: 24px;
+    }
+
+    .login-card {
+        padding: 28px 20px;
     }
 }
