@@ -63,8 +63,9 @@
 
             @include('partials.flash')
 
-            <form method="POST" action="{{ route('login.store') }}">
+            <form id="loginForm" method="POST" action="{{ route('login.store') }}">
                 @csrf
+                <input type="hidden" name="remember" id="rememberLogin" value="0">
 
                 <!-- EMAIL -->
                 <div class="field">
@@ -80,7 +81,7 @@
                         value="{{ old('email') }}"
                         required
                         autofocus
-                        autocomplete="email"
+                        autocomplete="username"
                         placeholder="admin@example.com"
                     >
 
@@ -102,7 +103,7 @@
                             name="password"
                             required
                             autocomplete="current-password"
-                            placeholder="••••••••"
+                            placeholder="Enter your password"
                         >
 
                         <button
@@ -146,6 +147,15 @@
 
             </form>
 
+            <dialog class="remember-dialog" id="rememberDialog" aria-labelledby="rememberTitle" aria-describedby="rememberDescription">
+                <h2 id="rememberTitle">Save your sign-in?</h2>
+                <p id="rememberDescription">Remember your email and let your browser offer password autofill. Your password is not stored by TextileFlow.</p>
+                <div class="remember-dialog-actions">
+                    <button class="btn" type="button" id="notNowButton">Not now</button>
+                    <button class="btn primary" type="button" id="saveLoginButton">Save</button>
+                </div>
+            </dialog>
+
 
             <p class="login-security-note">
                 Authorized team members only
@@ -166,12 +176,69 @@
             const passwordToggle =
                 document.getElementById('passwordToggle');
 
+            const emailInput =
+                document.getElementById('email');
+
             const eyeIcon =
                 document.getElementById('eyeIcon');
+
+            const loginForm =
+                document.getElementById('loginForm');
+
+            const rememberDialog =
+                document.getElementById('rememberDialog');
+
+            const rememberLogin =
+                document.getElementById('rememberLogin');
+
+            const saveLoginButton =
+                document.getElementById('saveLoginButton');
+
+            const notNowButton =
+                document.getElementById('notNowButton');
+
+            if (emailInput && !emailInput.value) {
+                emailInput.value =
+                    window.localStorage.getItem('textileflow_saved_email') || '';
+            }
 
 
             if (!passwordInput || !passwordToggle || !eyeIcon) {
                 return;
+            }
+
+            if (loginForm && rememberDialog && rememberLogin) {
+                loginForm.addEventListener('submit', function (event) {
+                    if (loginForm.dataset.confirmed === 'true') {
+                        delete loginForm.dataset.confirmed;
+                        return;
+                    }
+
+                    event.preventDefault();
+                    rememberDialog.showModal();
+                });
+
+                function submitLogin(shouldRemember) {
+                    rememberLogin.value = shouldRemember ? '1' : '0';
+                    loginForm.dataset.confirmed = 'true';
+                    rememberDialog.close();
+                    loginForm.requestSubmit();
+                }
+
+                saveLoginButton.addEventListener('click', function () {
+                    if (emailInput) {
+                        window.localStorage.setItem(
+                            'textileflow_saved_email',
+                            emailInput.value
+                        );
+                    }
+
+                    submitLogin(true);
+                });
+
+                notNowButton.addEventListener('click', function () {
+                    submitLogin(false);
+                });
             }
 
 
