@@ -6,7 +6,7 @@ use App\Models\Packing;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class PackingController extends Controller
+class FinishingController extends Controller
 {
     public function index()
     {
