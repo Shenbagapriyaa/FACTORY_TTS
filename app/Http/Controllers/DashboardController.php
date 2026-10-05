@@ -22,37 +22,46 @@ use App\Models\Washing;
 use App\Models\Finishing;
 use App\Models\Packing;
 use App\Models\Shipment;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index', [
+        $dashboardCounts = Cache::remember(
+            'dashboard_counts',
+            now()->addMinutes(10),
+            function () {
+                return [
 
-            // MASTER
-            'fabricCount' => Fabric::count(),
-            'groupCount' => FabricGroup::count(),
+                    // MASTER
+                    'fabricCount' => Fabric::count(),
+                    'groupCount' => FabricGroup::count(),
 
-            // PRODUCTION
-            'materialReceivingCount' => MaterialReceiving::count(),
-            'grnCount' => GRN::count(),
-            'inspectionCount' => Inspection::count(),
-            'fabricStoreCount' => FabricStore::count(),
-            'relaxationCount' => Relaxation::count(),
-            'reservationCount' => Reservation::count(),
-            'fabricIssueCount' => FabricIssue::count(),
+                    // PRODUCTION
+                    'materialReceivingCount' => MaterialReceiving::count(),
+                    'grnCount' => GRN::count(),
+                    'inspectionCount' => Inspection::count(),
+                    'fabricStoreCount' => FabricStore::count(),
+                    'relaxationCount' => Relaxation::count(),
+                    'reservationCount' => Reservation::count(),
+                    'fabricIssueCount' => FabricIssue::count(),
 
-            'orderCount' => Order::count(),
-            'patternCount' => Pattern::count(),
-            'layCount' => LayModel::count(),
-            'markerCount' => Marker::count(),
-            'cuttingCount' => Cutting::count(),
-            'bundleCount' => Bundle::count(),
-            'sewingCount' => Sewing::count(),
-            'washingCount' => Washing::count(),
-            'finishingCount' => Finishing::count(),
-            'packingCount' => Packing::count(),
-            'shipmentCount' => Shipment::count(),
-        ]);
+                    'orderCount' => Order::count(),
+                    'patternCount' => Pattern::count(),
+                    'layCount' => LayModel::count(),
+                    'markerCount' => Marker::count(),
+                    'cuttingCount' => Cutting::count(),
+                    'bundleCount' => Bundle::count(),
+                    'sewingCount' => Sewing::count(),
+                    'washingCount' => Washing::count(),
+                    'finishingCount' => Finishing::count(),
+                    'packingCount' => Packing::count(),
+                    'shipmentCount' => Shipment::count(),
+                ];
+            }
+        );
+
+        return view('dashboard.index', $dashboardCounts);
     }
 }
